@@ -1,0 +1,22 @@
+name: Deploy
+
+on:
+    push:
+        branches: [main]
+
+jobs:
+    deploy:
+        name: Deploy
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
+            
+            - name: Setup Aftman
+              uses: ok-nick/setup-aftman@v0.4.2
+              with:
+                token: ${{ github.token }}
+
+            - run: rojo build -o build.rbxl
+
+            - run: rbxcloud experience publish --filename build.rbxl --place-id 94193885029110 --universe-id 8151689082 --version-type published --api-key ${{ secrets.API_KEY }}
