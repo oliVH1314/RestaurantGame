@@ -1,9 +1,9 @@
-name: Deploy To Staging
+name: Deploy To Production
 
 on:
     push:
-        branches: [main]
-
+        tags:
+        - "v*"
 jobs:
     deploy:
         name: Deploy
@@ -19,4 +19,4 @@ jobs:
 
             - run: rojo build -o build.rbxl
 
-            - run: rbxcloud experience publish --filename build.rbxl --place-id 94193885029110 --universe-id 8151689082 --version-type published --api-key ${{ secrets.API_KEY }}
+            - run: rbxcloud experience publish --filename build.rbxl --place-id 103691878268796 --universe-id 8152024688 --version-type published --api-key ${{ secrets.API_KEY }}
