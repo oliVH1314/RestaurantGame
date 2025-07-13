@@ -17,6 +17,11 @@ jobs:
               with:
                 token: ${{ github.token }}
 
-            - run: rojo build -o build.rbxl
-
-            - run: rbxcloud experience publish --filename build.rbxl --place-id 103691878268796 --universe-id 8152024688 --version-type published --api-key ${{ secrets.API_KEY }}
+            - name: Publish place
+              shell: bash
+              env:
+                UID: 8151689082
+                PID: 94193885029110
+                API_KEY: ${{ secrets.API_KEY }}
+                FILE: build.rbxl
+              run: rbxcloud experience publish -a "$API_KEY" -u "$UID" -p "$PID" -t published -f "$FILE"
