@@ -20,8 +20,8 @@ jobs:
             - name: Publish place
               shell: bash
               env:
-                UID: 8151689082
-                PID: 94193885029110
+                UID: 8152024688
+                PID: 103691878268796
                 API_KEY: ${{ secrets.API_KEY }}
                 FILE: build.rbxl
               run: rbxcloud experience publish -a "$API_KEY" -u "$UID" -p "$PID" -t published -f "$FILE"

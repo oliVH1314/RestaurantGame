@@ -24,4 +24,4 @@ jobs:
                 PID: 94193885029110
                 API_KEY: ${{ secrets.API_KEY }}
                 FILE: build.rbxl
-              run: rbxcloud experience publish -a "$API_KEY" -u "$UID" -p "$PID" -t published -f "$FILE"
+              run: rbxcloud experience publish --filename $FILE --place-id $PID --universe-id $UID --version-type published --api-key $API_KEY
