@@ -17,6 +17,9 @@ jobs:
               with:
                 token: ${{ github.token }}
 
+            - name: Build place
+              run: rojo build -o build.rbxl
+
             - name: Publish place
               shell: bash
               env:
